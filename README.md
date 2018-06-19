@@ -1,9 +1,31 @@
 # FIBOS.JS
 
-## Install
+General purpose library for FIBOS and EOSIO blockchains.
+
+## Geting Started
+
+Install the module with:
 
 ```sh
 npm install fibos.js
+```
+
+Starting FIBOS&EOSIO blockchains journey with fibos.js:
+
+```javascript
+var FIBOSJS = require('fibos.js')
+
+config = {
+	chainId: 'Chain ID', // 32 byte (64 char) hex string
+	keyProvider: ['PrivateKey'], // WIF string or array of keys..
+	httpEndpoint: 'http://127.0.0.1:8888',
+	expireInSeconds: 60,
+	broadcast: true,
+	verbose: false, // API activity
+	sign: true
+}
+
+var fibosjs = FIBOSJS(config);
 ```
 
 ## Test
@@ -15,20 +37,29 @@ npm test
 ## BLOCKCHAIN Support
 
 - [FIBOS](https://fibos.io)
-- [EOS](https://eos.io/)
+- [EOSIO](https://eos.io/)
 
 ## Features
 
-fibos.js add a set of synchronous version method on [eosjs](https://github.com/EOSIO/eosjs).
-
-## Introduction
-
-General purpose library for FIBOS and EOSIO blockchains.
+fibos.js adds a set of synchronous version method on [eosjs](https://github.com/EOSIO/eosjs).
 
 ## Documentation
 
+Compared with [eosjs](https://github.com/EOSIO/eosjs), fibos.js did not add new functions, the developer documentation can refer to eosjs. You could find all functions on [eosjs project page](https://github.com/EOSIO/eosjs). For fibos.js, the only thing you need to do is to switch those awful asynchronous function calls to the synchronous version. 
 
-fibos.js did not add new functions, the development of documents can refer to eosjs, only need to change the asynchronous call to synchronous version.  [wiki](https://github.com/EOSIO/eosjs-api/blob/master/docs/index.md).
+For example,
+
+```javascript
+// old-fashioned
+eos.getInfo((error, result) => { console.log(error, result) })
+
+// stylish usage
+var chainId = eos.getInfoSync().chain_id;
+```
+
+Also, you could find use cases in `test/test.js`. With these cases, you will find out the parameters you should pass and the return values you expected. 
+
+At the moment, preliminary development on fibos.js has been completed, but there are still a lot of work to be done, such as improving the use cases. After that, you will see more advancing usages with fibos.js.
 
 ## TodoList
 
