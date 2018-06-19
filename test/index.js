@@ -1,4 +1,4 @@
-var Eos = require('../lib/')
+var Eos = require('..')
 
 config = {
 	chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca', // 32 byte (64 char) hex string
@@ -16,7 +16,7 @@ var test = require("test");
 
 test.setup();
 
-describe("fib-eosjs: ", () => {
+describe("fibos.js: ", () => {
 
 	it("getInfoSync() should return info of the blockchain", () => {
 		assert.ok(eos.getInfoSync().chain_id != null);
