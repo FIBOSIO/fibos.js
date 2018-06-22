@@ -25,7 +25,7 @@ config = {
 	sign: true
 }
 
-var fibosjs = FIBOSJS(config);
+var fibos = FIBOSJS(config);
 ```
 
 ## Test
@@ -51,10 +51,10 @@ For example,
 
 ```javascript
 // old-fashioned
-eos.getInfo((error, result) => { console.log(error, result) })
+fibos.getInfo((error, result) => { console.log(error, result) })
 
 // stylish usage
-var chainId = eos.getInfoSync().chain_id;
+var chainId = fibos.getInfoSync().chain_id;
 ```
 
 Also, you could find use cases in `test/test.js`. With these cases, you will find out the parameters you should pass and the return values you expected. 
