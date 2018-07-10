@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  nodeosd:
+    image: eosio/eos:v1.0.7
+    build:
+      context: .
+      dockerfile: Dockerfile
+      #args:
+      #  branch: master
+
+    command: /opt/eosio/bin/nodeosd.sh --verbose-http-errors --max-transaction-time=1000 --data-dir /opt/eosio/bin/data-dir -e
+    hostname: nodeosd
+    ports:
+      - 8888:8888
+      - 9876:9876
+    expose:
+      - "8888"
+
+  keosd:
+    image: eosio/eos:v1.0.7
+    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/data-dir --http-server-address=0.0.0.0:8900
+    hostname: keosd
+    ports:
+      - 8900:8900
+    links:
+      - nodeosd
