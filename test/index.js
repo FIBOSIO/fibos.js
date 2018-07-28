@@ -1,6 +1,7 @@
 var test = require("test");
 test.setup();
 
+run(`./ecc/`);
 run(`./index.test.js`);
 run(`./format.test.js`);
 run(`./schema.test.js`);
