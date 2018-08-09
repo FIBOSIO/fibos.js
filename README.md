@@ -100,13 +100,13 @@ fibos.getBlockSync("block_number");
 fibos.getInfoSync().head_block_num;
 ```
 
-###3.Get Last_Irreversiable_Block Number
+### 3.Get Last_Irreversiable_Block Number
 
 ```
 fibos.getInfoSync().last_irreversible_block_num;
 ```
 
-###4.Create A New FIBOS Account
+### 4.Create A New FIBOS Account
 
 ```
 fibos.newaccountSync({
@@ -123,20 +123,20 @@ fibos.newaccountSync({
 fibos.getTableRowsSync(true, "eosio.token", "your acount name", "accounts")
 ```
 
-###6.Get Account Info
+### 6.Get Account Info
 
 ```
 fibos.getAccountSync("your account name");
 ```
 
-###7.Make a successful transfer 
+### 7.Make a successful transfer 
 
 ```
 fibos.contractSync("eosio.token").transferSync("your account name", "transfer to account name", '1000000.0000 FO', 'transfer');
 Tips:Keep four digits after the decimal point，or you can't transfer successfully
 ```
 
-###8.To be continued... 
+### 8.To be continued... 
 
 If you want get more api usage or use FIBOS node service，please go to  [fibos.io](https://fibos.io) !
 
