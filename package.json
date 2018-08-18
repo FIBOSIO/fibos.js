@@ -1,6 +1,6 @@
 {
   "name": "fibos.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "General purpose library for FIBOS and EOSIO blockchains",
   "main": "./lib/index.js",
   "repository": "git://github.com/fibosio/fibos.js.git",
