@@ -11,7 +11,7 @@ describe('shorthand', () => {
     const eos = Eos()
     const {authority} = eos.fc.structs
 
-    const pubkey = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
+    const pubkey = 'FO6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
     const auth = {threshold: 1, keys: [{key: pubkey, weight: 1}]}
 
     assert.deepEqual(authority.fromObject(pubkey), auth)
@@ -26,8 +26,8 @@ describe('shorthand', () => {
     const {authority} = eos.fc.structs
 
     const pubkeys = [
-      'EOS7wBGPvBgRVa4wQN2zm5CjgBF6S7tP7R3JavtSa2unHUoVQGhey',
-      'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
+      'FO7wBGPvBgRVa4wQN2zm5CjgBF6S7tP7R3JavtSa2unHUoVQGhey',
+      'FO6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
     ]
 
     const authSorted = {threshold: 1, keys: [
@@ -48,7 +48,7 @@ describe('shorthand', () => {
     const eos = Eos()
     const {structs, types} = eos.fc
     const PublicKeyType = types.public_key()
-    const pubkey = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
+    const pubkey = 'FO6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
     // 02c0ded2bc1f1305fb0faac5e6c03ee3a1924234985427b6167ca569d13df435cf
     assertSerializer(PublicKeyType, pubkey)
   })
