@@ -136,7 +136,14 @@ fibos.contractSync("eosio.token").transferSync("your account name", "transfer to
 Tips:Keep four digits after the decimal point，or you can't transfer successfully
 ```
 
-### 8.To be continued... 
+### 8.Generate FIBOS publickey and privatekey
+
+```
+var privateKey = fibos.modules.ecc.randomKeySync();//privateKey 
+fibos.modules.ecc.privateToPublic(privateKey);//publickey
+```
+
+### 9.To be continued... 
 
 If you want get more api usage or use FIBOS node service，please go to  [fibos.io](https://fibos.io) !
 
