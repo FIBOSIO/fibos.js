@@ -1,8 +1,9 @@
 {
   "name": "fibos.js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "General purpose library for FIBOS and EOSIO blockchains",
   "main": "./lib/index.js",
+  "browser": "./lib/node.js",
   "repository": "git://github.com/fibosio/fibos.js.git",
   "author": "vicky@d3j.io",
   "homepage": "https://github.com/fibosio/fibos.js",
