@@ -94,7 +94,7 @@ describe('offline', () => {
     assert.equal(trx.transaction.signatures.length, 1, 'signature count')
   })
 
-  it('abi', async function() {
+  xit('abi', async function() {
     const eos = Eos({httpEndpoint: null})
 
     const abiBuffer = fs.readFileSync(`docker/contracts/eosio.bios/eosio.bios.abi`)

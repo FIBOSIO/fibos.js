@@ -113,17 +113,17 @@ describe('format', () => {
 
   it('parseAsset', () => {
     const parseExtendedAssets = [
-      ['SYM', null, null, 'SYM', undefined],
+      ['SYM', null, null, 'SYM', null],
       ['SYM@contract', null, null, 'SYM', 'contract'],
-      ['4,SYM', null, 4, 'SYM', undefined],
+      ['4,SYM', null, 4, 'SYM', null],
       ['4,SYM@contract', null, 4, 'SYM', 'contract'],
-      ['1 SYM', '1', 0, 'SYM', undefined],
-      ['-1 SYM', '-1', 0, 'SYM', undefined],
-      ['1.0 SYM', '1.0', 1, 'SYM', undefined],
+      ['1 SYM', '1', 0, 'SYM', null],
+      ['-1 SYM', '-1', 0, 'SYM', null],
+      ['1.0 SYM', '1.0', 1, 'SYM', null],
       ['1.0000 SYM@contract', '1.0000', 4, 'SYM', 'contract'],
       ['1.0000 SYM@tract.token', '1.0000', 4, 'SYM', 'tract.token'],
       ['1.0000 SYM@tr.act.token', '1.0000', 4, 'SYM', 'tr.act.token'],
-      ['1.0000 SYM', '1.0000', 4, 'SYM', undefined],
+      ['1.0000 SYM', '1.0000', 4, 'SYM', null],
     ]
     for(const [str, amount, precision, symbol, contract] of parseExtendedAssets) {
       assert.deepEqual(
