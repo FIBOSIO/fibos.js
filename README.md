@@ -90,25 +90,25 @@ var fibos = FIBOS({
 
 ### 1.Get Block Info
 
-```
+```js
 fibos.getBlockSync("block_number");
 ```
 
 ### 2.Get Head_Block Number
 
-```
+```js
 fibos.getInfoSync().head_block_num;
 ```
 
 ### 3.Get Last_Irreversiable_Block Number
 
-```
+```js
 fibos.getInfoSync().last_irreversible_block_num;
 ```
 
 ### 4.Create A New FIBOS Account
 
-```
+```js
 fibos.newaccountSync({
     creator: 'eosio',
     name: "hellomongodb",
@@ -119,31 +119,89 @@ fibos.newaccountSync({
 
 ### 5.Get Account Balance
 
-```
-fibos.getTableRowsSync(true, "eosio.token", "your acount name", "accounts")
+```js
+fibos.getTableRowsSync(true, "eosio.token", account, "accounts")
 ```
 
 ### 6.Get Account Info
 
-```
-fibos.getAccountSync("your account name");
+```js
+fibos.getAccountSync(account);
 ```
 
-### 7.Make a successful transfer 
+### 7.Make a successful transfer
+
+
 
 ```
-fibos.contractSync("eosio.token").transferSync("your account name", "transfer to account name", '1000000.0000 FO', 'transfer');
-Tips:Keep four digits after the decimal point，or you can't transfer successfully
+var ctx = fibos.contractSync("eosio.token");
+api1: ctx.transferSync(from, to, quality, memo);
+api2: ctx.extransferSync(from, to, quality, memo, {
+			authorization: from
+		});
 ```
 
 ### 8.Generate FIBOS publickey and privatekey
 
-```
+```js
 var privateKey = fibos.modules.ecc.randomKeySync();//privateKey 
 fibos.modules.ecc.privateToPublic(privateKey);//publickey
 ```
 
-### 9.To be continued... 
+### 9.Token contract api
+
+There are two kinds of token in FIBOS : classic token and smart token .
+
+  #### 1). create token
+
+```js
+let ctx = fibos.contractSync("eosio.token");
+ctx.excreateSync(issuer, maximum_supply,  connector_weight, maximum_exchange,reserve_supply, reserve_connector_balance, {
+    authorization: issuer
+});
+```
+
+> Tips:when the connector_weight's value is 0 , this token is classic token ,while between 0 and 1 , it is smart token. If it is smart token ,you must calculate reserve_supply and reserve_connector_balance according to [bancor](https://github.com/FIBOSIO/bancor) .
+
+#### 2).issue token 
+
+```js
+let ctx = fibos.contractSync("eosio.token");
+ctx.exissueSync(to, quality, memo, {
+				authorization: issuer
+			})
+```
+
+>Only classic token can be issued !
+
+#### 3).retire token 
+
+```js
+let ctx = fibos.contractSync("eosio.token");
+ctx.exissueSync(from, quality, memo, {
+				authorization: from
+			})
+```
+
+#### 4).close token
+
+```javascript
+let ctx = fibos.contractSync("eosio.token");
+ctx.excloseSync(owner, symbol, {
+				authorization: owner
+			});
+```
+
+#### 5).destory token
+
+```JS
+let ctx = fibos.contractSync("eosio.token");
+let r = ctx.exdestroySync(symbol, {authorization: issuer});
+```
+
+
+
+### 10.To be continued... 
 
 If you want get more api usage or use FIBOS node service，please go to  [fibos.io](https://fibos.io) !
 
