@@ -154,49 +154,166 @@ There are two kinds of token in FIBOS : classic token and smart token .
 
   #### 1). create token
 
-```js
-let ctx = fibos.contractSync("eosio.token");
-ctx.excreateSync(issuer, maximum_supply,  connector_weight, maximum_exchange,reserve_supply, reserve_connector_balance, {
+**接口**
+
+```
+excreateSync(issuer, maximum_supply,  connector_weight, maximum_exchange,reserve_supply, reserve_connector_balance, {
     authorization: issuer
 });
 ```
 
-> Tips:when the connector_weight's value is 0 , this token is classic token ,while between 0 and 1 , it is smart token. If it is smart token ,you must calculate reserve_supply and reserve_connector_balance according to [bancor](https://github.com/FIBOSIO/bancor) .
+**参数解释**
+
+| 参数                      | 含义                                                   |
+| ------------------------- | ------------------------------------------------------ |
+| issuer                    | 通证发行者                                             |
+| maximum_supply            | 最大可发行通证数量                                     |
+| connector_weight          | 连接器权重（值为0时表示为普通通证，0-1之间为智能通证） |
+| maximum_exchange          | 最大可兑换(流通)的通证数量                             |
+| reserve_supply            | 未流通通证数量                                         |
+| reserve_connector_balance | 未流通通证保证金数量                                   |
+
+**实例**
+
+```js
+//初始化 fibos 客户端
+...
+let name = "fibostest123";
+let ctx = fibos.contractSync("eosio.token");
+let r = ctx.excreateSync(name, "100000000000.0000 AAA",  0.15,'10000000000.0000 AAA', '3000000000.0000 AAA', '90000.0000 FO', {
+    authorization: name
+});
+console.log(r);excreateSync(issuer, maximum_supply,  connector_weight, maximum_exchange,reserve_supply, reserve_connector_balance, {
+    authorization: issuer
+});
+```
 
 #### 2).issue token 
 
-```js
-let ctx = fibos.contractSync("eosio.token");
-ctx.exissueSync(to, quality, memo, {
+**接口**
+
+```
+exissueSync(to, quality, memo, {
 				authorization: issuer
 			})
 ```
 
->Only classic token can be issued !
+**参数解释**
+
+| 参数          | 含义             |
+| ------------- | ---------------- |
+| to            | 增发通证接收账号 |
+| quality       | 数量             |
+| memo          | 附言             |
+| authorization | 发行方           |
+
+**实例**
+
+```js
+//初始化 fibos 客户端
+...
+let name = "fibostest123";
+let ctx = fibos.contractSync("eosio.token");
+let r = ctx.exissueSync(name, "1000000.0000 ABC", "issue to fibostest123", {
+				authorization: name
+			})
+console.log(r);
+```
+
+>只有普通通证支持增发
 
 #### 3).retire token 
 
-```js
-let ctx = fibos.contractSync("eosio.token");
-ctx.exissueSync(from, quality, memo, {
+**接口**
+
+```
+exretireSync(from, quantity, memo, {
 				authorization: from
+			});
+```
+
+**参数解释**
+
+| 参数          | 含义             |
+| ------------- | ---------------- |
+| from          | 销毁通证接收账号 |
+| quality       | 数量             |
+| memo          | 附言             |
+| authorization | 销毁通证账号权限 |
+
+**实例**
+
+```js
+//初始化 fibos 客户端
+...
+let name = "fibostest123";
+let ctx = fibos.contractSync("eosio.token");
+let r = ctx.exretireSync(name, "1000000.0000 ABC", "retire token", {
+				authorization: name
 			})
+console.log(r);
 ```
 
 #### 4).close token
 
-```javascript
-let ctx = fibos.contractSync("eosio.token");
-ctx.excloseSync(owner, symbol, {
-				authorization: owner
-			});
+**接口**
+
 ```
+exissueSync(owner, symbol, {
+				authorization: owner
+			})
+```
+
+**参数解释**
+
+| 参数          | 含义               |
+| ------------- | ------------------ |
+| owner         | 通证持有者账号     |
+| symbol        | 通证代号           |
+| authorization | 通证持有者账号权限 |
+
+**实例**
+
+```js
+//初始化 fibos 客户端
+...
+let owner = "fibostest123";
+let ctx = fibos.contractSync("eosio.token");
+let r = ctx.exissueSync(owner, "0.0000 ABC", {
+				authorization: owner
+			})
+console.log(r);
+```
+
+
 
 #### 5).destory token
 
-```JS
+**接口**
+
+```
+exdestroySync(symbol, {
+				authorization: issuer
+			})
+```
+
+**参数解释**
+
+| 参数          | 含义           |
+| ------------- | -------------- |
+| symbol        | 通证符号       |
+| authorization | 通证发行者权限 |
+
+**实例**
+
+```js
+//初始化 fibos 客户端
+...
 let ctx = fibos.contractSync("eosio.token");
-let r = ctx.exdestroySync(symbol, {authorization: issuer});
+let r = ctx.exdestroySync("0.0000 ABC", {
+				authorization: issuer
+			})
+console.log(r);
 ```
 
 
