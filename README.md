@@ -118,7 +118,15 @@ fibos.newaccountSync({
 ### 5.Get Account Balance
 
 ```
-fibos.getTableRowsSync(true, "eosio.token", account, "accounts")
+For FIBOS Network:
+
+When you can get account balance,token name must be with suffix.("EOS@eosio")
+
+fibos.getCurrencyBalanceSync("eosio.token", "your acount name", "EOS@eosio");
+
+For EOS Network:
+
+fibos.getCurrencyBalanceSync("eosio.token", "your acount name", "EOS");
 ```
 
 ### 6.Get Account Info
