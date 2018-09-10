@@ -6,13 +6,13 @@ General purpose library for FIBOS and EOSIO blockchains.
 
 Install the module with:
 
-```sh
+```
 npm install fibos.js
 ```
 
 Starting FIBOS&EOSIO blockchains journey with fibos.js:
 
-```javascript
+```
 var FIBOSJS = require('fibos.js')
 
 config = {
@@ -30,13 +30,13 @@ var fibos = FIBOSJS(config);
 
 ## Test
 
-```sh
+```
 npm test
 ```
 
 ## BLOCKCHAIN Support
 
-- [FIBOS](https://fibos.io)
+- [FIBOS](https://fibos.io/)
 - [EOSIO](https://eos.io/)
 
 ## Features
@@ -45,11 +45,11 @@ fibos.js adds a set of synchronous version method on [eosjs](https://github.com/
 
 ## Documentation
 
-Compared with [eosjs](https://github.com/EOSIO/eosjs), fibos.js did not add new functions, the developer documentation can refer to eosjs. You could find all functions on [eosjs project page](https://github.com/EOSIO/eosjs). For fibos.js, the only thing you need to do is to switch those awful asynchronous function calls to the synchronous version. 
+Compared with [eosjs](https://github.com/EOSIO/eosjs), fibos.js did not add new functions, the developer documentation can refer to eosjs. You could find all functions on [eosjs project page](https://github.com/EOSIO/eosjs). For fibos.js, the only thing you need to do is to switch those awful asynchronous function calls to the synchronous version.
 
 For example,
 
-```javascript
+```
 // old-fashioned
 fibos.getInfo((error, result) => { console.log(error, result) })
 
@@ -57,7 +57,7 @@ fibos.getInfo((error, result) => { console.log(error, result) })
 var chainId = fibos.getInfoSync().chain_id;
 ```
 
-Also, you could find use cases in `test/test.js`. With these cases, you will find out the parameters you should pass and the return values you expected. 
+Also, you could find use cases in `test/test.js`. With these cases, you will find out the parameters you should pass and the return values you expected.
 
 At the moment, preliminary development on fibos.js has been completed, but there are still a lot of work to be done, such as improving the use cases. After that, you will see more advancing usages with fibos.js.
 
@@ -86,29 +86,27 @@ var fibos = FIBOS({
 });
 ```
 
-
-
 ### 1.Get Block Info
 
-```js
+```
 fibos.getBlockSync("block_number");
 ```
 
 ### 2.Get Head_Block Number
 
-```js
+```
 fibos.getInfoSync().head_block_num;
 ```
 
 ### 3.Get Last_Irreversiable_Block Number
 
-```js
+```
 fibos.getInfoSync().last_irreversible_block_num;
 ```
 
 ### 4.Create A New FIBOS Account
 
-```js
+```
 fibos.newaccountSync({
     creator: 'eosio',
     name: "hellomongodb",
@@ -119,19 +117,17 @@ fibos.newaccountSync({
 
 ### 5.Get Account Balance
 
-```js
+```
 fibos.getTableRowsSync(true, "eosio.token", account, "accounts")
 ```
 
 ### 6.Get Account Info
 
-```js
+```
 fibos.getAccountSync(account);
 ```
 
 ### 7.Make a successful transfer
-
-
 
 ```
 var ctx = fibos.contractSync("eosio.token");
@@ -143,7 +139,7 @@ api2: ctx.extransferSync(from, to, quality, memo, {
 
 ### 8.Generate FIBOS publickey and privatekey
 
-```js
+```
 var privateKey = fibos.modules.ecc.randomKeySync();//privateKey 
 fibos.modules.ecc.privateToPublic(privateKey);//publickey
 ```
@@ -152,7 +148,7 @@ fibos.modules.ecc.privateToPublic(privateKey);//publickey
 
 There are two kinds of token in FIBOS : classic token and smart token .
 
-  #### 1). create token
+#### 1). create token
 
 **接口**
 
@@ -188,7 +184,7 @@ console.log(r);excreateSync(issuer, maximum_supply,  connector_weight, maximum_e
 });
 ```
 
-#### 2).issue token 
+#### 2).issue token
 
 **接口**
 
@@ -220,9 +216,9 @@ let r = ctx.exissueSync(name, "1000000.0000 ABC", "issue to fibostest123", {
 console.log(r);
 ```
 
->只有普通通证支持增发
+> 只有普通通证支持增发
 
-#### 3).retire token 
+#### 3).retire token
 
 **接口**
 
@@ -285,8 +281,6 @@ let r = ctx.exissueSync(owner, "0.0000 ABC", {
 console.log(r);
 ```
 
-
-
 #### 5).destory token
 
 **接口**
@@ -309,6 +303,7 @@ exdestroySync(symbol, {
 ```js
 //初始化 fibos 客户端
 ...
+let issuer = "fibostest123";
 let ctx = fibos.contractSync("eosio.token");
 let r = ctx.exdestroySync("0.0000 ABC", {
 				authorization: issuer
@@ -316,11 +311,9 @@ let r = ctx.exdestroySync("0.0000 ABC", {
 console.log(r);
 ```
 
+### 10.To be continued...
 
-
-### 10.To be continued... 
-
-If you want get more api usage or use FIBOS node service，please go to  [fibos.io](https://fibos.io) !
+If you want get more api usage or use FIBOS node service，please go to [fibos.io](https://fibos.io/) !
 
 
 
