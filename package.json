@@ -16,7 +16,13 @@
     "fibjs"
   ],
   "scripts": {
-    "test": "fibjs ./test/index.js"
+    "test": "fibjs ./test/index.js",
+    "build_browser": "browserify -o dist/fibos.js -s Fibos lib/index.js"
+  },
+  "devDependencies": {
+    "browserify": "14.4.0",
+    "io": "^1.0.0",
+    "zip": "^1.2.0"
   },
   "dependencies": {
     "eosjs": "16.0.2"
