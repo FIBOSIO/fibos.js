@@ -15,6 +15,13 @@ Starting FIBOS&EOSIO blockchains journey with fibos.js:
 ```
 var FIBOSJS = require('fibos.js')
 
+
+for EOSIO
+
+FIBOSJS.setPrefix('EOS')
+
+
+
 config = {
 	chainId: 'Chain ID', // 32 byte (64 char) hex string
 	keyProvider: ['PrivateKey'], // WIF string or array of keys..
