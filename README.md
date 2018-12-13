@@ -16,7 +16,7 @@ Starting FIBOS&EOSIO blockchains journey with fibos.js:
 var FIBOSJS = require('fibos.js')
 
 
-for EOSIO
+//for EOSIO
 
 FIBOSJS.setPrefix('EOS')
 
