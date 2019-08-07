@@ -8,8 +8,9 @@ const Eos = require('..');
 describe('shorthand', () => {
 
   it('authority', () => {
-    const eos = Eos()
-    const {authority} = eos.fc.structs
+    const eos = Eos({keyPrefix: 'FO', httpEndpoint: null})
+    const eosio = eos.contractSync('eosio')
+    const {authority} = eosio.fc.structs
 
     const pubkey = 'FO6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
     const auth = {threshold: 1, keys: [{key: pubkey, weight: 1}]}
@@ -22,8 +23,9 @@ describe('shorthand', () => {
   })
 
   it('PublicKey sorting', () => {
-    const eos = Eos()
-    const {authority} = eos.fc.structs
+    const eos = Eos({keyPrefix: 'FO', httpEndpoint: null})
+    const eosio = eos.contractSync('eosio')
+    const {authority} = eosio.fc.structs
 
     const pubkeys = [
       'FO7wBGPvBgRVa4wQN2zm5CjgBF6S7tP7R3JavtSa2unHUoVQGhey',
@@ -145,7 +147,7 @@ describe('Action.data', () => {
   })
 
   it('unknown type', () => {
-    const eos = Eos({forceActionDataHex: false})
+    const eos = Eos({forceActionDataHex: false, httpEndpoint: null})
     const {structs, types} = eos.fc
     const value = {
       account: 'eosio.token',
@@ -153,7 +155,10 @@ describe('Action.data', () => {
       data: '030a0b0c',
       authorization: []
     }
-    assertSerializer(structs.action, value)
+    assert.throws(
+      () => assertSerializer(structs.action, value),
+      /Missing ABI action/
+    )
   })
 })
 
