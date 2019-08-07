@@ -25,6 +25,6 @@
     "zip": "^1.2.0"
   },
   "dependencies": {
-    "eosjs": "16.0.2"
+    "eosjs": "16.0.9"
   }
 }
