@@ -1,5 +1,7 @@
 # FIBOS.JS
 
+[![NPM version][npm-image]][npm-url]
+
 General purpose library for FIBOS and EOSIO blockchains.
 
 ## Geting Started
