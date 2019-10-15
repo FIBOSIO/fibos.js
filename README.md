@@ -1,6 +1,6 @@
 # FIBOS.JS
 
-[![NPM version][npm-image]][npm-url]
+[![NPM version](https://img.shields.io/npm/v/fibos.js?style=flat-square)](https://www.npmjs.com/package/fibos.js)
 
 General purpose library for FIBOS and EOSIO blockchains.
 
