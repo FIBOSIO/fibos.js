@@ -25,6 +25,7 @@
     "zip": "^1.2.0"
   },
   "dependencies": {
-    "eosjs": "22.1"
+    "eosjs": "22.1",
+    "web3-eth-abi": "^1.8.1"
   }
 }
